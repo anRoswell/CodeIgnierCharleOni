@@ -14,6 +14,8 @@ Class User_Authentication extends CI_Controller {
         // Load form validation library
         $this->load->library('form_validation');
 
+        $this->load->database('default');
+
         // Load session library
         //$this->load->library('session'); //Aparently this line is loaded by default so just commented it
 

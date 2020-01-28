@@ -392,20 +392,23 @@
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                   <input type="date" name="lapso" id="" class="form-control">
+            <?php echo form_open('informesController',array('role'=>'form')); ?>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-3">
+                    <input type="date" name="lapso" id="" class="form-control">
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-3" >
+                    <input type="text" name="diaHabil" id="diaHabil" placeholder="Dia habil" class="form-control">
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-6">
+                        <input type="text" name="diaEfectivo" id="diaEfectivo" class="form-control" min="0">
+                    </div>
+                    <div class="col-sm-12 col-lg-3 col-md-6">
+                        <input type="submit" value="Consultar" class="form-control" min="0">
+                    </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3" >
-                   <input type="number" name="diaHabil" id="diaHabil" placeholder="Dia habil" class="form-control">
-                </div>
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <input type="number" name="diaEfectivo" id="diaEfectivo" class="form-control" min="0">
-                </div>
-                <div class="col-sm-12 col-lg-3 col-md-6">
-                    <input type="button" value="Consultar" class="form-control" min="0">
-                </div>
-            </div>
+            <?php echo form_close(); ?>
+            
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-8">
