@@ -64,7 +64,7 @@
                             }
                         ?>
 
-                        <?php echo form_open('user_authentication/user_login_process',array('role'=>'form')); ?>
+                        <?php echo form_open('loginController/user_login_process',array('role'=>'form')); ?>
                             <fieldset>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Username" name="username" type="username" value="<?php echo set_value('username'); ?>" autofocus>

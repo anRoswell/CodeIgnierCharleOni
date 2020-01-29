@@ -2,7 +2,7 @@
 
 session_start(); //we need to start session in order to access it through CI
 
-Class User_Authentication extends CI_Controller {
+Class LoginController extends CI_Controller {
     public function __construct() {
         try {
             parent::__construct();
@@ -20,20 +20,26 @@ Class User_Authentication extends CI_Controller {
         //$this->load->library('session'); //Aparently this line is loaded by default so just commented it
 
         // Load database
-        $this->load->model('login_database');
+        $this->load->model('loginModel');
     }
 
+    /**
+     * Valida si la varible de session existe 
+     * lo q indica usuario logueado o no
+     * @return bool true o false
+     */
     private function user_already_logged() {
         return isset($this->session->userdata['logged_in']);
     }
         
     // Show login page
     public function index() {
+        echo "llego al index";
         //If already logged, continue to admin page
         if ($this->user_already_logged()) {
             $this->load->view('admin_page');
         } else {
-            $this->load->view('login_form');
+            $this->load->view('loginView');
         }
     }
 
@@ -65,7 +71,7 @@ Class User_Authentication extends CI_Controller {
             $result = $this->login_database->registration_insert($data);
             if ($result == TRUE) {
                 $data['message_display'] = 'Registration Successfully !';
-                $this->load->view('login_form', $data);
+                $this->load->view('loginView', $data);
             } else {
                 $data['message_display'] = 'Username or Email already exist!';
                 $this->load->view('registration_form', $data);
@@ -75,28 +81,28 @@ Class User_Authentication extends CI_Controller {
 
     // Check for user login process
     public function user_login_process() {
-
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
-
+        
         if ($this->form_validation->run() == FALSE) {
             if(isset($this->session->userdata['logged_in'])){
                 $this->load->view('admin_page');
             }else{
-                $this->load->view('login_form');
+                $this->load->view('loginView');
             }
         } else {
+            
             $data = array(
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password')
             );
 
-            $result = $this->login_database->login($data);
-            
+            $result = $this->loginModel->login($data);
+
             if (password_verify($data['password'], $result[0]->user_password)) {
 
                 $username = $this->input->post('username');
-                $result = $this->login_database->read_user_information($username);
+                $result = $this->loginModel->read_user_information($username);
                 if ($result != false) {
                     $session_data = array(
                     'username' => $result[0]->user_name,
@@ -116,7 +122,7 @@ Class User_Authentication extends CI_Controller {
                 'error_message' => 'Invalid Username or Password'
                 // . $data['password'] . ' ' . $result[0]->user_password . ' ' . password_hash($data['password'], PASSWORD_DEFAULT)
                 );
-                $this->load->view('login_form', $data);
+                $this->load->view('loginView', $data);
             }
         }
     }
@@ -131,7 +137,7 @@ Class User_Authentication extends CI_Controller {
         $this->session->unset_userdata('logged_in', $sess_array);
         $this->session->sess_destroy();
         $data['message_display'] = 'Successfully Logout';
-        $this->load->view('login_form', $data);
+        $this->load->view('loginView', $data);
     }
 
 }

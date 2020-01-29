@@ -1,6 +1,6 @@
 <?php
 
-    Class Login_Database extends CI_Model {
+    Class LoginModel extends CI_Model {
 
         public function __construct() {
             parent::__construct(); // construct the Model class
