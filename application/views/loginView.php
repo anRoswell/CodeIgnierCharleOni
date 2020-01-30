@@ -30,6 +30,10 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>/vendor/bootstrap/css/style.css" /> -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
 </head>
 
 <body>
@@ -82,7 +86,7 @@
                             </fieldset>
                             <?php echo form_close(); ?>
                         <br/>
-                        <a href="<?php echo base_url(); ?>index.php/user_authentication/user_registration_show" class="btn btn-sm btn-info btn-block">To SignUp Click Here</a>
+                        <a href="<?php echo base_url(); ?>index.php/LoginController/user_registration_show" class="btn btn-sm btn-info btn-block">To SignUp Click Here</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +104,7 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url();?>/dist/js/sb-admin-2.js"></script>
-
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 </body>
 
 </html>

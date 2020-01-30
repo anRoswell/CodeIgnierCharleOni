@@ -265,7 +265,7 @@
                         <li>
 
 
-                        <li><a href="<?php echo base_url();?>index.php/user_authentication/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="<?php echo base_url();?>index.php/loginController/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
                         </li>
                     </ul>
@@ -855,32 +855,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="<?php echo base_url();?>/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?php echo base_url();?>/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="<?php echo base_url();?>/vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?php echo base_url();?>/vendor/raphael/raphael.min.js"></script>
-    <script src="<?php echo base_url();?>/vendor/morrisjs/morris.min.js"></script>
-    <script src="<?php echo base_url();?>/data/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="<?php echo base_url();?>/dist/js/sb-admin-2.js"></script>
-
-
-
-
-
-
-    
-
-
     <div id="profile">
     <?php
         echo "Hello <b id='welcome'><i>" . $username . "</i> !</b>";
@@ -903,5 +877,21 @@
     <button class="btn btn-lg btn-success btn-block" name="submit" type="submit" value="">Logout</button>
     <?php echo form_close(); ?>
 
+        <!-- jQuery -->
+    <script src="<?php echo base_url();?>/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?php echo base_url();?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="<?php echo base_url();?>/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?php echo base_url();?>/vendor/raphael/raphael.min.js"></script>
+    <script src="<?php echo base_url();?>/vendor/morrisjs/morris.min.js"></script>
+    <script src="<?php echo base_url();?>/data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="<?php echo base_url();?>/dist/js/sb-admin-2.js"></script>
     </body>
 </html>
