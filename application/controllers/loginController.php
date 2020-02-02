@@ -4,6 +4,7 @@ session_start(); //we need to start session in order to access it through CI
 
 Class LoginController extends CI_Controller {
     public function __construct() {
+        echo "Entro por __construct()";
         try {
             parent::__construct();
         } catch (Exception $e) {}
@@ -29,6 +30,7 @@ Class LoginController extends CI_Controller {
      * @return bool true o false
      */
     private function user_already_logged() {
+        echo "Entro por user_already_logged";
         return isset($this->session->userdata['logged_in']);
     }
         
@@ -81,17 +83,18 @@ Class LoginController extends CI_Controller {
 
     // Check for user login process
     public function user_login_process() {
+        echo "Entro por user_login_process";
         $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
         $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
         
         if ($this->form_validation->run() == FALSE) {
             if(isset($this->session->userdata['logged_in'])){
-                $this->load->view('admin_page');
+                $dataResult = $this->VentasZonas();
+                $this->load->view('admin_page', $dataResult);
             }else{
                 $this->load->view('loginView');
             }
         } else {
-            
             $data = array(
                 'username' => $this->input->post('username'),
                 'password' => $this->input->post('password')
@@ -111,11 +114,9 @@ Class LoginController extends CI_Controller {
 
                     // Add user data in session
                     $this->session->set_userdata('logged_in', $session_data);
-                    if (false) {
-                        $this->load->view('welcome_message');
-                    }else {
-                        $this->load->view('admin_page');
-                    }
+                    $dataResult = $this->VentasZonas();
+                    $this->load->view('admin_page', $dataResult);
+                    //$this->load->view('admin_page');
                 }
             } else {
                 $data = array(
@@ -138,6 +139,20 @@ Class LoginController extends CI_Controller {
         $this->session->sess_destroy();
         $data['message_display'] = 'Successfully Logout';
         $this->load->view('loginView', $data);
+    }
+
+    /**
+     * 
+     */
+    public function VentasZonas()
+    {
+        $this->db->close();
+        // Load database
+        $this->load->database('clc');
+        $this->load->model('InformesModel');
+        $data['titulo'] = 'Informes Uncle Charles';
+        $data['VentasZonas'] = $this->InformesModel->queryVentasZonas();
+        return $data;
     }
 
 }

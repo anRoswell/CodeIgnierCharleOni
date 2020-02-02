@@ -7,9 +7,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-
     <title><?php echo $titulo; ?></title>
   </head>
   <body>   
@@ -205,6 +203,7 @@
     <script src="https://code.highcharts.com/stock/modules/export-data.js"></script> -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>vendor/bootstrap/js/funciones.js"></script>
+    
     
   </body>
 </html>
